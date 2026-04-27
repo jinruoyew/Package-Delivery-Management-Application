@@ -1,0 +1,44 @@
+<div class="container mt-6">
+    <div class="card">
+      <div class="card-header">Distance Calculator</div>
+      <div class="card-body">
+  
+        @if(packagesDb.length===0){
+        <h3>No packages in the database</h3>
+        }@else{
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th>Id</th>
+              <th>Package Id</th>
+              <th>Title</th>
+              <th>Weight</th>
+              <th>Destination</th>
+              <th>Description</th>
+              <th>KMs to Melb</th>
+            </tr>
+          </thead>
+          @for(package of packagesDb;track $index){
+          <tr>
+            <td>{{package._id}}</td>
+            <td>{{package.package_id}}</td>
+            <td>{{package.package_title}}</td>
+            <td>{{package.package_weight}}</td>
+            <td>{{package.package_destination}}</td>
+            <td>{{package.description}}</td>
+            <td><button class="btn btn-primary" (click)="calculateDistance(package.package_destination)"> D </button></td>
+          </tr>
+          }
+        </table>
+        }
+      </div>
+    </div>
+    @if (result.length != 0) {
+    <div class="card">
+        <div class="card-body">
+            <h3>{{result}}</h3>
+        </div>
+    </div>
+    }
+</div>
+  

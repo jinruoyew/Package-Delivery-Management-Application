@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <link href="/bootstrap.min.css" rel="stylesheet"/>
+        <style>
+            .image-title-container img {
+                max-width: 100%; 
+                max-height: 100%; 
+                object-fit: contain; 
+            }
+            .image-title-container {
+                display: flex;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card bg-primary">
+            <div class="row image-title-container">
+                <div class="col" style="flex: 1;">
+                    <img src="/logo.png" alt="Logo">
+                </div>
+                <div class="col text-white " style="flex: 6;">
+                    <h1 style="font-size: xxx-large">Package Delivery Management Application</h1>
+                </div>
+            </div>
+        </div>
+
+        <%- include('./partials/navbar'); %>
+
+        <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr class="table-info">
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Licence</th>
+                    <th>is Active?</th>
+                    <th>Created At</th>
+                    <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for (let i = 0; i < db.length ; i++){ %>
+                    <tr>
+                        <td><%= db[i].driver_id %></td>
+                        <td><%= db[i].driver_name %></td>
+                        <td style="text-transform: capitalize;"><%= db[i].driver_department %></td>
+                        <td><%= db[i].driver_licence %></td>
+                        <td><%= db[i].driver_isActive %></td>
+                        <td><%= db[i].driver_createdAt.toLocaleString() %></td>
+                        <td>
+                            <form method="POST" action="/33343276/JinRuo/delete-driver-req?driver_id=<%= db[i].driver_id %>">
+                                <button type="submit" class="btn btn-danger" >X</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+    </body>
+    <footer class="footer">
+        <%- include('./partials/footer'); %>
+    </footer>
+</html>

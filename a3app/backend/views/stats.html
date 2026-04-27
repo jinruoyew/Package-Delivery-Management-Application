@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <link href="/bootstrap.min.css" rel="stylesheet"/>
+        <style>
+            .image-title-container img {
+                max-width: 100%; 
+                max-height: 100%; 
+                object-fit: contain; 
+            }
+            .image-title-container {
+                display: flex;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card bg-primary">
+            <div class="row image-title-container">
+                <div class="col" style="flex: 1;">
+                    <img src="/logo.png" alt="Logo">
+                </div>
+                <div class="col text-white " style="flex: 6;">
+                    <h1 style="font-size: xxx-large">CRUD Count Stats</h1>
+                </div>
+            </div>
+        </div>
+
+        <%- include('./partials/navbar'); %>
+
+        <div class="table-responsive"></div>
+            <table class="table">
+              <thead>
+                <tr class="table-info">
+                    <th>Operation</th>
+                    <th>Count</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <td>Creates</td>
+                    <td><%= creates %></td>
+                </tr>
+                <tr>
+                    <td>Reads</td>
+                    <td><%= reads %></td>
+                </tr>
+                <tr>
+                    <td>Updates</td>
+                    <td><%= updates %></td>
+                </tr>
+                <tr>
+                    <td>Deletes</td>
+                    <td><%= deletes %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        
+    </body>
+    <footer class="footer">
+        <%- include('./partials/footer'); %>
+    </footer>
+</html>

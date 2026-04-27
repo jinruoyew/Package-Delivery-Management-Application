@@ -1,0 +1,39 @@
+<div class="container mt-6">
+    <div class="card">
+      <div class="card-header">Delete Package</div>
+      <div class="card-body">
+  
+        @if(packagesDb.length===0){
+        <h3>No packages in the database</h3>
+        }@else{
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th>Id</th>
+              <th>Title</th>
+              <th>Weight</th>
+              <th>Destination</th>
+              <th>Description</th>
+              <th>isAllocated?</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          @for(package of packagesDb;track $index){
+          <tr>
+            <td>{{package.package_id}}</td>
+            <td>{{package.package_title}}</td>
+            <td>{{package.package_weight|convertWeight}}</td>
+            <td>{{package.package_destination}}</td>
+            <td>{{package.description}}</td>
+            <td>{{package.isAllocated}}</td>
+            <td><button class="btn btn-danger" (click)="deletePackage(package._id)">X</button></td>
+          </tr>
+          }
+        </table>
+        }
+      </div>
+    </div>
+  </div>
+  
+  
+

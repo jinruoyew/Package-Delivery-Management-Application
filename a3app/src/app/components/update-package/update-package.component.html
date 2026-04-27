@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="card mt-6">
+      <div class="card-header">Update Package Form</div>
+      <div class="card-body">
+        <form>
+            <div class="form-group">
+                <label for="package_id">Package Id:</label>
+                <input type="text" id="package_id" name="package_id" class="form-control" [(ngModel)]="package._id">
+            </div>
+            <div class="form-group">
+                <label for="package_destination">Destination</label>
+                <input type="text" id="package_destination" name="package_destination" class="form-control" [(ngModel)]="package.package_destination">
+            </div>
+            <div class="pt-3">
+                <button class="btn btn-success" (click)="updatePackage()">Update Package</button>
+            </div>
+        </form>
+      </div>
+    </div>
+</div>
+  
+

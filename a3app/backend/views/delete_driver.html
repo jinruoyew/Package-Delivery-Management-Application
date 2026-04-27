@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <link href="/bootstrap.min.css" rel="stylesheet"/>
+        <style>
+            .image-title-container img {
+                max-width: 100%; 
+                max-height: 100%; 
+                object-fit: contain; 
+            }
+            .image-title-container {
+                display: flex;
+                align-items: center; 
+            }
+            .centered-form {
+                display: flex;
+                justify-content: center; 
+                align-items: center; 
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <div class="card-header bg-primary">
+                <div class="row image-title-container">
+                    <div class="col" style="flex: 1;">
+                        <img src="/logo.png" alt="Logo">
+                    </div>
+                    <div class="col text-white " style="flex: 6;">
+                        <h1 style="font-size: xxx-large">Delete Driver Form</h1>
+                    </div>
+                </div>
+            </div>
+
+            <%- include('./partials/navbar'); %>
+            
+            <div class="card-body centered-form pb-3">
+                <form id="deleteDriver" action="/33343276/JinRuo/delete-driver" method="get">
+                    <div class="form-group pb-3">
+                        <label for="driver_id">Driver ID:</label>
+                        <input type="text" id="driver_id" name="driver_id" class="form-control">
+                    </div>
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </form>    
+            </div>
+        </div>
+        <script>
+            document.getElementById("deleteDriver").onsubmit = function() {
+                const driverId = document.getElementById('driver_id').value;
+                this.action = `/33343276/JinRuo/delete-driver-req?driver_id=${driverId}`;
+            };
+        </script>
+    </body>
+    <footer class="footer">
+        <%- include('./partials/footer'); %>
+    </footer>
+</html>

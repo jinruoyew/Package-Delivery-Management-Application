@@ -1,0 +1,81 @@
+<div class="container mt-6">
+    <div class="card">
+      <div class="card-header">Translate</div>
+      <div class="card-body">
+  
+        @if(packagesDb.length===0){
+        <h3>No packages in the database</h3>
+        }@else{
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th>Id</th>
+              <th>Package Id</th>
+              <th>Title</th>
+              <th>Weight</th>
+              <th>Destination</th>
+              <th>Description</th>
+              <th>Translate</th>
+            </tr>
+          </thead>
+          @for(package of packagesDb;track $index){
+          <tr>
+            <td>{{package._id}}</td>
+            <td>{{package.package_id}}</td>
+            <td>{{package.package_title}}</td>
+            <td>{{package.package_weight}}</td>
+            <td>{{package.package_destination}}</td>
+            <td>{{package.description}}</td>
+            <td><button class="btn btn-success" (click)="translateDesc(package.description)">T</button></td>
+          </tr>
+          }
+        </table>
+        }
+      </div>
+    </div>
+<div class="card pt-6">
+        <div class="card-body">
+          <form>
+              <div class="form-group">
+                  <label for="target_language">Target Language:</label>
+                      <select id="target_language" name="target_language" class="form-select" placeholder="Select Target Language" [(ngModel)]="targetLanguage">
+                          <option value="zh-CN" selected>Chinese</option>
+                          <option value="ja">Japanese</option>
+                          <option value="fr">French</option>
+                      </select>
+              </div>
+          </form>
+        </div>
+      </div>
+  </div>
+<div class="container mt-6">
+    @if(translations.length > 0){
+    <div class="card">
+      <div class="card-header">Translations</div>
+      <div class="card-body">
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th>Text</th>
+                <th>Target Language</th>
+                <th>Translation</th>
+              </tr>
+            </thead>
+            @for(translation of translations;track $index){
+            <tr>
+                <td>{{translation.text}}</td>
+                <td>{{translation.targetLanguage|convertLanguage}}</td>
+                <td>{{translation.translation}}</td>
+            </tr>
+            }
+          </table>
+      </div>
+    </div>
+    }
+</div>
+
+
+
+
+  
+  
